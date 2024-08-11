@@ -4,10 +4,7 @@ import { CryptoState } from "../CryptoContext";
 import axios from "axios";
 import CoinInfo from "../components/Banner/CoinInfo";
 import LinearProgress from "@mui/material/LinearProgress";
-import ReactHtmlParser from "react-html-parser";
-import { numberWithCommas } from "../components/Banner/Carousel";
 import { SingleCoin } from "../config/api";
-import SelectButton from "../components/Banner/SelectButton";
 
 const Coins = () => {
   const { id } = useParams();
