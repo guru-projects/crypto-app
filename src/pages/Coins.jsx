@@ -46,7 +46,7 @@ console.log(coin);
                 </div>
               </div>
               <p className="max-w-xl text-left p-6 content-center">
-                {ReactHtmlParser(coin?.description.en.split(". ")[(0, 1)])}.
+                {coin?.description.en.split(". ")[(0, 1)]}.
               </p>
               <div className="">
                 <p className="font-bold text-3xl px-4">
