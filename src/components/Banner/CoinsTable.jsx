@@ -72,7 +72,7 @@ const CoinsTable = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container className="text-center mt-10">
+      <Container className="text-center mt-10 min-w-screen">
         <Typography variant="h4">
           Crypto Currency Prices By Market cap
         </Typography>
@@ -127,9 +127,11 @@ const CoinsTable = () => {
                             </div>
                         </div>
                       </TableCell>
-                      <TableCell align="center">
-                          {symbol}{" "}
-                          {numberWithCommas(row.current_price.toFixed(2))}
+                      <TableCell align="left">
+                          <div className="ml-10 whitespace-nowrap">
+                            {symbol}{" "}
+                            {numberWithCommas(row.current_price.toFixed(2).slice(0,6))}
+                          </div>
                         </TableCell>
                         <TableCell
                           align="center"

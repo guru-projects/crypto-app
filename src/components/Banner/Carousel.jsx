@@ -68,7 +68,6 @@ const Carousel = () => {
   return (
     <div>
       <AliceCarousel
-        paddingLeft={50}
         mouseTracking
         infinite
         autoPlayInterval={1000}
@@ -77,7 +76,8 @@ const Carousel = () => {
         disableButtonsControls
         responsive={responsive}
         autoPlay
-        items={items}></AliceCarousel>
+        items={items}
+        className='pl-12'></AliceCarousel>
     </div>
   );
 };
