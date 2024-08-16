@@ -33,7 +33,7 @@ ChartJS.register(
 const CoinInfo = (coin) => {
   const [history, setHistory] = useState();
   const [days, setDays] = useState(1);
-  const [flag,setflag] = useState(false);
+  const [flag, setflag] = useState(false);
   const id = coin.id;
   console.log(id);
 

@@ -12,7 +12,7 @@ const Coins = () => {
 
   const { currency, symbol } = CryptoState();
   const [loading, setLoading] = useState(false);
-console.log(coin);
+  console.log(coin);
 
   const fetchCoin = async () => {
     const { data } = await axios.get(SingleCoin(id));
@@ -55,11 +55,10 @@ console.log(coin);
                 </p>
                 <p className="font-bold text-3xl px-4">
                   Market Cap:{" "}
-                  {
-                    coin?.market_data.market_cap[
-                      currency.toLowerCase()
-                    ].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",").slice(0,-6)
-                  }
+                  {coin?.market_data.market_cap[currency.toLowerCase()]
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                    .slice(0, -6)}
                   M
                 </p>
               </div>

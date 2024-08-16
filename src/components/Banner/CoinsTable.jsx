@@ -29,7 +29,7 @@ const CoinsTable = () => {
   const [loading, setLoading] = useState(false);
   const { currency, symbol } = CryptoState();
   const [search, setSearch] = useState("");
-  const [page, setPage] = useState(1)
+  const [page, setPage] = useState(1);
   const navigate = useNavigate();
 
   const fetchCoins = async () => {
@@ -98,39 +98,38 @@ const CoinsTable = () => {
               </TableHead>
 
               <TableBody>
-                {handleSearch().slice((page - 1) * 10, (page - 1) * 10 + 10).map((row) => {
-                  const profit = row.price_change_percentage_24h > 0;
-                  return (
-                    <TableRow
-                      onClick={() => navigate(`/coins/${row.id}`)}
-                      key={row.name}
-                      className="hover:bg-slate-700 cursor-pointer">
-                      <TableCell
-                        component="th"
-                        scope="row"
-                        >
-                        <div className="flex gap-4 items-center">
+                {handleSearch()
+                  .slice((page - 1) * 10, (page - 1) * 10 + 10)
+                  .map((row) => {
+                    const profit = row.price_change_percentage_24h > 0;
+                    return (
+                      <TableRow
+                        onClick={() => navigate(`/coins/${row.id}`)}
+                        key={row.name}
+                        className="hover:bg-slate-700 cursor-pointer">
+                        <TableCell component="th" scope="row">
+                          <div className="flex gap-4 items-center">
                             <img
                               src={row?.image}
                               alt={row.name}
                               className=" w-14"
                             />
                             <div>
-                                <span className="uppercase pt-2 text-left">
-                                  {row?.symbol}
-                                  &nbsp; &nbsp;
-                                  <br />
-                                  <span className="opacity-60">
-                                   {row?.name}
-                                  </span>
-                                </span>
+                              <span className="uppercase pt-2 text-left">
+                                {row?.symbol}
+                                &nbsp; &nbsp;
+                                <br />
+                                <span className="opacity-60">{row?.name}</span>
+                              </span>
                             </div>
-                        </div>
-                      </TableCell>
-                      <TableCell align="left">
+                          </div>
+                        </TableCell>
+                        <TableCell align="left">
                           <div className="ml-10 whitespace-nowrap">
                             {symbol}{" "}
-                            {numberWithCommas(row.current_price.toFixed(2).slice(0,6))}
+                            {numberWithCommas(
+                              row.current_price.toFixed(2).slice(0, 6)
+                            )}
                           </div>
                         </TableCell>
                         <TableCell
@@ -138,34 +137,39 @@ const CoinsTable = () => {
                           style={{
                             color: profit > 0 ? "rgb(14, 203, 129)" : "red",
                             fontWeight: 500,
-                          }}
-                        >
+                          }}>
                           {profit ? (
                             <TrendingUpIcon sx={{ color: green["A400"] }} />
-                            ) : (
+                          ) : (
                             <TrendingDownIcon sx={{ color: red["A200"] }} />
-                            )}
-                          {row.price_change_percentage_24h.toFixed(2).replace(/-/g, "")}%
+                          )}
+                          {row.price_change_percentage_24h
+                            .toFixed(2)
+                            .replace(/-/g, "")}
+                          %
                         </TableCell>
                         <TableCell align="center">
                           {symbol}{" "}
-                          {numberWithCommas(row.market_cap.toString().slice(0, -6))}M
+                          {numberWithCommas(
+                            row.market_cap.toString().slice(0, -6)
+                          )}
+                          M
                         </TableCell>
-                    </TableRow>
-                  );
-                })}
+                      </TableRow>
+                    );
+                  })}
               </TableBody>
             </Table>
           )}
         </TableContainer>
- 
-        <Pagination className="flex justify-center p-10" count={(handleSearch()?.length / 10).toFixed(0)} onChange={(_,value) => {
+
+        <Pagination
+          className="flex justify-center p-10"
+          count={(handleSearch()?.length / 10).toFixed(0)}
+          onChange={(_, value) => {
             setPage(value);
             window.scroll(0, 450);
-        }}>
-
-        </Pagination>
-
+          }}></Pagination>
       </Container>
     </ThemeProvider>
   );
